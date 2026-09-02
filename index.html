@@ -45,13 +45,36 @@
   .lang button.on{background:#fff;color:var(--ink)}
   .bookbtn{background:var(--coral);color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border-radius:99px;transition:.25s;white-space:nowrap}
   .bookbtn:hover{background:#fff;color:var(--ink)}
+  /* hamburger (hidden on desktop) */
+  .burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:0;background:none;cursor:pointer;padding:0}
+  .burger span{display:block;width:24px;height:2px;background:#fff;margin:0 auto;border-radius:2px;transition:.3s}
+  nav.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.open .burger span:nth-child(2){opacity:0}
+  nav.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mpanel{display:none}
+
   @media(max-width:760px){
-    .navlinks{display:none}
+    nav{padding:0}
+    nav .wrap{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .navr{display:none}                 /* hide the desktop control cluster */
+    .burger{display:flex}                /* show hamburger */
     .brand .b2{display:none}
-    .brand .b1{font-size:15px}
-    .navr{gap:8px}
-    .lang button{padding:7px 9px;font-size:10px;min-width:34px}
-    .bookbtn{padding:9px 12px;font-size:10px;letter-spacing:.05em}
+    .brand .b1{font-size:16px;line-height:1}
+
+    /* slide-down panel */
+    .mpanel{display:block;position:fixed;left:0;right:0;top:56px;z-index:55;
+      background:rgba(5,35,33,.98);backdrop-filter:blur(16px);border-top:1px solid var(--line);
+      transform:translateY(-140%);transition:transform .34s cubic-bezier(.4,0,.2,1);
+      box-shadow:0 24px 40px rgba(0,0,0,.4)}
+    nav.open + .mpanel, .mpanel.open{transform:translateY(0)}
+    .mpanel .inner{padding:14px 22px 22px;display:flex;flex-direction:column}
+    .mpanel a.mlink{color:#fff;font-size:16px;font-weight:600;letter-spacing:.04em;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .mpanel a.mlink:last-of-type{border-bottom:0}
+    .mpanel .mlang{display:flex;gap:10px;margin:16px 0 4px}
+    .mpanel .mlang button{flex:1;padding:12px;border:1px solid rgba(255,255,255,.3);background:none;color:rgba(255,255,255,.75);border-radius:99px;font-family:inherit;font-weight:700;font-size:12px;letter-spacing:.1em;cursor:pointer}
+    .mpanel .mlang button.on{background:#fff;color:var(--ink)}
+    .mpanel .mbook{margin-top:14px;text-align:center;background:var(--coral);color:#fff;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:15px;border-radius:99px;font-size:12px}
+    .mpanel .mtour{margin-top:10px;text-align:center;background:rgba(127,214,201,.16);border:1px solid var(--aqua);color:#fff;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:14px;border-radius:99px;font-size:12px}
   }
 
   /* ===== HERO ===== */
@@ -59,6 +82,7 @@
   .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,35,33,.72) 0%,rgba(5,35,33,.28) 40%,rgba(4,22,20,.94) 100%)}
   .hero .wrap{position:relative;padding-top:130px;padding-bottom:44px;width:100%}
+  @media(max-width:640px){.hero .wrap{padding-top:110px}}
   .hero .eyebrow{color:var(--aqua);margin-bottom:20px;text-shadow:0 1px 14px rgba(0,0,0,.7)}
   .hero h1{font-weight:500;font-size:clamp(48px,9.5vw,116px);line-height:.98;letter-spacing:-.02em;text-shadow:0 4px 44px rgba(0,0,0,.9),0 2px 8px rgba(0,0,0,.6);max-width:12ch}
   .hero h1 em{font-style:italic;color:var(--coral-lt)}
@@ -199,7 +223,20 @@
     </div>
     <a data-i18n="nav_book" class="bookbtn" href="https://192885-001.holidayfuture.com/all-listings" target="_blank" rel="noopener">Book Direct</a>
   </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
+<div class="mpanel" id="mpanel"><div class="inner">
+  <a class="mlink" data-i18n="nav_st" href="#collection">Studios</a>
+  <a class="mlink" data-i18n="nav_tour" href="#tour">Tour</a>
+  <a class="mlink" data-i18n="nav_res" href="#residence">The Tower</a>
+  <a class="mlink" data-i18n="nav_nb" href="#area">Neighbourhood</a>
+  <div class="mlang" aria-label="Language">
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="es">ES</button>
+  </div>
+  <a class="mtour" data-i18n="m_tour" href="#tour">&#9658; Watch the tour</a>
+  <a class="mbook" data-i18n="nav_book" href="https://192885-001.holidayfuture.com/all-listings" target="_blank" rel="noopener">Book Direct</a>
+</div></div>
 
 <header class="hero" id="top">
   <img class="bg" src="https://bookingenginecdn.hostaway.com/listing/192885-586538-f-fc--TRwQhs8kmdHRBAxxJmhBJDbVVwAaR-ESOzikSI-6a94770e4ed5c?width=1800&quality=78&format=webp" alt="Penthouse studio, Downtown Miami" onerror="this.style.display='none'"/>
@@ -403,7 +440,18 @@
 
 <script>
 (function(){
-  var ES = {"nav_st": "Estudios", "nav_tour": "Recorrido", "hero_tour": "<span class=\"play\">&#9658;</span> Ver el recorrido", "tr_eb": "El recorrido", "tr_h2": "Recorre cada estudio, antes de llegar.", "nav_res": "La torre", "nav_nb": "El vecindario", "nav_book": "Reserva directa", "hero_h1": "Miami, desde el <em>piso 30.</em>", "hero_p": "Seis estudios privados en una torre del Downtown — piscina en la azotea, gimnasio y vistas al horizonte, a minutos del puerto de cruceros. Resérvalos directamente con nosotros, nunca a través de intermediarios.", "hero_book": "Reserva directa", "hero_view": "Ver los estudios", "st1": "Estudios privados", "st2": "Mejor calificación", "st3": "Conserjería y seguridad", "col_eb": "Los estudios", "col_h2": "Seis estudios, en lo alto del Downtown.", "col_k": "Un dormitorio, hasta tres huéspedes, piscina, gimnasio y cocinas totalmente equipadas — con calificaciones de 4.0 a 4.8 de huéspedes recientes. Cada estancia incluye la piscina en la azotea, el gimnasio y los salones de la torre.", "nm1": "Penthouse · Piso 30", "sub1": "Estudio penthouse de lujo · balcón · horizonte panorámico", "nm2": "Estudio Skyline · Piso 23", "sub2": "Cama queen · divisor inteligente · a pasos de Bayside", "nm3": "Estudio Puerto de Cruceros", "sub3": "Piso alto · vista al horizonte · a pasos del puerto", "nm4": "Moderno Downtown", "sub4": "Corazón del Downtown · piscina y gimnasio · cerca del puerto", "nm5": "Estudio Vista al Mar", "sub5": "Vistas al mar · Smart TV · cerca de la playa", "nm6": "Estancia de Lujo · Piscina y Gym", "sub6": "Espacio luminoso y elegante · a minutos del puerto", "view_res": "Ver estudio", "rate_new": "Nuevo", "rate_new2": "Nuevo", "dir_eb": "Reserva directa", "dir_h2": "El mismo estudio, sin la <em>comisión del intermediario.</em>", "d_best": "Mejor tarifa", "d_best_c": "Reserva con nosotros al precio más bajo disponible — garantizado.", "d_nofee": "Sin cargos", "d_nofee_c": "Sin cargos adicionales al finalizar. Nunca cobramos comisión de plataforma.", "d_ret": "En cada regreso", "d_ret_c": "Una tarifa especial para huéspedes que regresan, en cada estancia.", "d_note": "Reserva directamente con nosotros y consigue nuestra mejor tarifa, imbatible — un mejor precio para ti, que queda entre nosotros.", "res_eb": "La residencia", "res_h2": "Alea, una torre pensada para tu forma de vivir hoy.", "res_d": "Una torre de 2018 con 32 pisos en el corazón del distrito financiero, con hospitalidad de nivel hotelero en su azotea y planta baja — a una cuadra de Bayside Marketplace y la bahía.", "am1t": "Piscina climatizada de agua salada", "am1s": "Solárium de dos niveles con jardín de césped", "am2t": "Gimnasio", "am2s": "Sala de spinning y yoga al aire libre", "am3t": "Espacio de coworking", "am3s": "Trabaja a pasos de tu estudio", "am4t": "Restaurante y café", "am4s": "En la planta baja", "am5t": "Conserjería y seguridad 24 horas", "am5s": "Acceso controlado y seguro", "am6t": "Estacionamiento al lado", "am6s": "Garaje College Station · $15 por 24 h", "nb_eb": "El vecindario", "nb_h2": "Todo lo que vale la pena, a tu alcance.", "nb_1": "1 cuadra", "nb_2": "2 cuadras", "nb_1b": "1 cuadra", "nb_w": "2 min a pie", "nb_min": "A minutos", "nb_15": "15 min en auto", "cta_eb": "Estamos para ti", "cta_h2": "Respondemos, 24/7.", "cta_p": "Pregúntanos lo que quieras — los estudios, la torre, el estacionamiento o el vecindario — en inglés o español, a cualquier hora. Reserva directamente con nosotros y obtén nuestras mejores tarifas, imbatibles.", "cta_hint": "Pregúntanos · abajo a la derecha de tu pantalla", "f_st": "Estudios", "f_res": "Residencia", "f_book": "Reserva directa"};
+  var nav=document.getElementById('nav'), b=document.getElementById('burger'), p=document.getElementById('mpanel');
+  if(!b||!p) return;
+  function close(){ nav.classList.remove('open'); p.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
+  function toggle(){ var o=!p.classList.contains('open'); nav.classList.toggle('open',o); p.classList.toggle('open',o); b.setAttribute('aria-expanded',o?'true':'false'); }
+  b.addEventListener('click',toggle);
+  p.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',close); });
+})();
+</script>
+
+<script>
+(function(){
+  var ES = {"nav_st": "Estudios", "nav_tour": "Recorrido", "m_tour": "&#9658; Ver el recorrido", "hero_tour": "<span class=\"play\">&#9658;</span> Ver el recorrido", "tr_eb": "El recorrido", "tr_h2": "Recorre cada estudio, antes de llegar.", "nav_res": "La torre", "nav_nb": "El vecindario", "nav_book": "Reserva directa", "hero_h1": "Miami, desde el <em>piso 30.</em>", "hero_p": "Seis estudios privados en una torre del Downtown — piscina en la azotea, gimnasio y vistas al horizonte, a minutos del puerto de cruceros. Resérvalos directamente con nosotros, nunca a través de intermediarios.", "hero_book": "Reserva directa", "hero_view": "Ver los estudios", "st1": "Estudios privados", "st2": "Mejor calificación", "st3": "Conserjería y seguridad", "col_eb": "Los estudios", "col_h2": "Seis estudios, en lo alto del Downtown.", "col_k": "Un dormitorio, hasta tres huéspedes, piscina, gimnasio y cocinas totalmente equipadas — con calificaciones de 4.0 a 4.8 de huéspedes recientes. Cada estancia incluye la piscina en la azotea, el gimnasio y los salones de la torre.", "nm1": "Penthouse · Piso 30", "sub1": "Estudio penthouse de lujo · balcón · horizonte panorámico", "nm2": "Estudio Skyline · Piso 23", "sub2": "Cama queen · divisor inteligente · a pasos de Bayside", "nm3": "Estudio Puerto de Cruceros", "sub3": "Piso alto · vista al horizonte · a pasos del puerto", "nm4": "Moderno Downtown", "sub4": "Corazón del Downtown · piscina y gimnasio · cerca del puerto", "nm5": "Estudio Vista al Mar", "sub5": "Vistas al mar · Smart TV · cerca de la playa", "nm6": "Estancia de Lujo · Piscina y Gym", "sub6": "Espacio luminoso y elegante · a minutos del puerto", "view_res": "Ver estudio", "rate_new": "Nuevo", "rate_new2": "Nuevo", "dir_eb": "Reserva directa", "dir_h2": "El mismo estudio, sin la <em>comisión del intermediario.</em>", "d_best": "Mejor tarifa", "d_best_c": "Reserva con nosotros al precio más bajo disponible — garantizado.", "d_nofee": "Sin cargos", "d_nofee_c": "Sin cargos adicionales al finalizar. Nunca cobramos comisión de plataforma.", "d_ret": "En cada regreso", "d_ret_c": "Una tarifa especial para huéspedes que regresan, en cada estancia.", "d_note": "Reserva directamente con nosotros y consigue nuestra mejor tarifa, imbatible — un mejor precio para ti, que queda entre nosotros.", "res_eb": "La residencia", "res_h2": "Alea, una torre pensada para tu forma de vivir hoy.", "res_d": "Una torre de 2018 con 32 pisos en el corazón del distrito financiero, con hospitalidad de nivel hotelero en su azotea y planta baja — a una cuadra de Bayside Marketplace y la bahía.", "am1t": "Piscina climatizada de agua salada", "am1s": "Solárium de dos niveles con jardín de césped", "am2t": "Gimnasio", "am2s": "Sala de spinning y yoga al aire libre", "am3t": "Espacio de coworking", "am3s": "Trabaja a pasos de tu estudio", "am4t": "Restaurante y café", "am4s": "En la planta baja", "am5t": "Conserjería y seguridad 24 horas", "am5s": "Acceso controlado y seguro", "am6t": "Estacionamiento al lado", "am6s": "Garaje College Station · $15 por 24 h", "nb_eb": "El vecindario", "nb_h2": "Todo lo que vale la pena, a tu alcance.", "nb_1": "1 cuadra", "nb_2": "2 cuadras", "nb_1b": "1 cuadra", "nb_w": "2 min a pie", "nb_min": "A minutos", "nb_15": "15 min en auto", "cta_eb": "Estamos para ti", "cta_h2": "Respondemos, 24/7.", "cta_p": "Pregúntanos lo que quieras — los estudios, la torre, el estacionamiento o el vecindario — en inglés o español, a cualquier hora. Reserva directamente con nosotros y obtén nuestras mejores tarifas, imbatibles.", "cta_hint": "Pregúntanos · abajo a la derecha de tu pantalla", "f_st": "Estudios", "f_res": "Residencia", "f_book": "Reserva directa"};
   var nodes = document.querySelectorAll('[data-i18n]');
   var EN = {};
   nodes.forEach(function(n){ EN[n.getAttribute('data-i18n')] = n.innerHTML; });
@@ -415,9 +463,9 @@
     });
     document.documentElement.lang = l;
     try{ localStorage.setItem('hf_lang', l); }catch(e){}
-    document.querySelectorAll('.lang button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-lang')===l); });
+    document.querySelectorAll('.lang button, .mlang button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-lang')===l); });
   }
-  document.querySelectorAll('.lang button').forEach(function(b){
+  document.querySelectorAll('.lang button, .mlang button').forEach(function(b){
     b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
   });
   var init='en';
