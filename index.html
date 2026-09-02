@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Holiday Future · Downtown Miami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --ink:#08302e; --ink2:#0c3d3a; --paper:#f6fbf9; --paper2:#eaf4f0;
+    --coral:#e8654a; --coral-lt:#ffb59f; --aqua:#8fd8cd; --line:rgba(255,255,255,.16);
+    --line-dk:rgba(8,48,46,.14); --muted:#5c7470;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .serif{font-family:"Fraunces",Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  @media(max-width:640px){.wrap{padding:0 20px}}
+  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;font-weight:600}
+  .rule{height:1px;background:var(--line-dk);border:0}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+  nav.solid{background:rgba(8,48,46,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .word{color:#fff;font-size:14px;letter-spacing:.32em;font-weight:400;text-transform:uppercase}
+  .word b{font-weight:700;color:var(--coral-lt)}
+  .navr{display:flex;align-items:center;gap:30px}
+  .navr a{color:rgba(255,255,255,.85);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+  .navr a:hover{color:#fff}
+  .navr a.book{color:var(--ink);background:var(--coral-lt);padding:10px 18px;letter-spacing:.12em;border-radius:2px;font-weight:600}
+  @media(max-width:640px){
+    nav .wrap{height:58px}
+    .word{font-size:11px;letter-spacing:.14em}
+    .navr{gap:9px}
+    .navr a:not(.book){display:none}
+    .navr a.book{padding:8px 11px;font-size:10.5px;letter-spacing:.06em}
+    .navr .langswitch{display:flex}
+  }
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+  .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,34,32,.82) 0%,rgba(5,34,32,.44) 42%,rgba(4,26,24,.96) 100%)}
+  .hero .frame{position:absolute;inset:22px;z-index:2;border:1px solid rgba(255,255,255,.26);pointer-events:none}
+  .hero .wrap{position:relative;z-index:3;padding-top:120px;padding-bottom:66px;width:100%}
+  .hero .eyebrow{color:var(--aqua);margin-bottom:26px;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+  .hero h1{font-weight:600;font-size:clamp(56px,10vw,118px);line-height:.96;letter-spacing:-.015em;text-shadow:0 3px 40px rgba(0,0,0,.9),0 2px 8px rgba(0,0,0,.65)}
+  .hero h1 em{font-style:italic;color:var(--coral-lt)}
+  .hero p{margin-top:24px;max-width:46ch;font-size:21px;font-weight:500;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.92),0 1px 3px rgba(0,0,0,.7)}
+  .hero .acts{margin-top:34px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+  .btn{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:15px 26px;border-radius:2px;transition:.25s}
+  .btn-solid{background:var(--coral);color:#fff}
+  .btn-solid:hover{background:var(--coral-lt);color:var(--ink)}
+  .btn-line{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding:6px 2px}
+  .btn-line:hover{border-color:var(--coral-lt);color:var(--coral-lt)}
+  .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.6);font-size:10px;letter-spacing:.3em;text-transform:uppercase;writing-mode:vertical-rl}
+
+  /* SECTION SHELL */
+  section{position:relative}
+  .lede{padding:120px 0 40px}
+  .lede .eyebrow{color:var(--coral);margin-bottom:20px}
+  .lede h2{font-weight:300;font-size:clamp(30px,4.4vw,52px);line-height:1.06;max-width:22ch;letter-spacing:-.005em}
+  .lede p.k{margin-top:20px;max-width:58ch;color:var(--muted);font-size:16px}
+
+  /* COLLECTION */
+  .collection{padding-bottom:120px}
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin-top:36px}
+  .est{grid-column:span 6;border-top:1px solid var(--line-dk);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}
+  .est .lbl{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .est .val{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral)}
+  .casa{grid-column:span 2;position:relative;display:block;background:var(--ink);overflow:hidden;aspect-ratio:3/4}
+  .casa:nth-child(2){grid-column:span 4}
+  .casa:nth-child(7){grid-column:span 4}
+  @media(max-width:820px){.casa,.casa:nth-child(n){grid-column:span 3}}
+  @media(max-width:520px){.casa,.casa:nth-child(n){grid-column:span 6;aspect-ratio:4/3}}
+  .casa img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1);filter:saturate(1.02)}
+  .casa:hover img{transform:scale(1.05)}
+  .casa .grad{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(4,26,24,.84));z-index:1}
+  .casa .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 22px 20px;color:#fff}
+  .casa .nm{font-family:"Fraunces",serif;font-weight:500;font-size:26px;line-height:1.05}
+  .casa .sub{font-size:12px;letter-spacing:.03em;color:rgba(255,255,255,.74);margin-top:7px}
+  .casa .rate{position:absolute;top:16px;right:18px;z-index:2;color:var(--coral-lt);font-size:12px;letter-spacing:.12em}
+  .casa .view{margin-top:12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--aqua);opacity:0;transform:translateY(6px);transition:.3s}
+  .casa:hover .view{opacity:1;transform:none}
+
+  /* DIRECT */
+  .direct{background:var(--ink);color:#fff;padding:130px 0}
+  .direct .eyebrow{color:var(--aqua)}
+  .direct h2{font-weight:300;font-size:clamp(30px,4.6vw,58px);line-height:1.04;margin-top:22px;max-width:16ch}
+  .direct h2 em{font-style:italic;color:var(--coral-lt)}
+  .ledger{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  @media(max-width:720px){.ledger{grid-template-columns:1fr;gap:0}}
+  .ledger .c{padding:30px 34px;border-left:1px solid var(--line)}
+  .ledger .c:first-child{border-left:0;padding-left:0}
+  .ledger .fig{font-family:"Fraunces",serif;font-size:50px;font-weight:300;line-height:1}
+  .ledger .c.keep .fig{color:var(--coral-lt)}
+  .ledger .cap{margin-top:14px;font-size:13.5px;color:rgba(255,255,255,.68);max-width:28ch}
+  .direct .note{margin-top:40px;font-size:14px;color:rgba(255,255,255,.6);max-width:60ch}
+
+  /* RESIDENCE */
+  .res{padding:120px 0;background:var(--paper2)}
+  .res .top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+  @media(max-width:800px){.res .top{grid-template-columns:1fr;gap:24px}}
+  .res h2{font-weight:300;font-size:clamp(28px,4vw,46px);line-height:1.05;max-width:16ch}
+  .res .addr{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-top:16px}
+  .res p.d{color:var(--muted);font-size:16px}
+  .amen{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-dk)}
+  @media(max-width:700px){.amen{grid-template-columns:1fr}}
+  .amen .a{padding:24px 26px 24px 0;border-bottom:1px solid var(--line-dk);border-right:1px solid var(--line-dk)}
+  .amen .a:nth-child(3n){border-right:0}
+  @media(max-width:700px){.amen .a{border-right:0}}
+  .amen .a .t{font-family:"Fraunces",serif;font-size:22px;font-weight:500}
+  .amen .a .s{font-size:13px;color:var(--muted);margin-top:4px}
+
+  /* LOCATION */
+  .loc{padding:120px 0}
+  .loc .row{display:flex;justify-content:space-between;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line-dk)}
+  .loc .row:first-of-type{border-top:1px solid var(--line-dk)}
+  .loc .row .p{font-family:"Fraunces",serif;font-size:26px;font-weight:400}
+  .loc .row .m{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+
+  /* CONTACT */
+  .cta-sec{background:var(--ink);color:#fff;padding:120px 0;text-align:center}
+  .cta-sec .eyebrow{color:var(--aqua)}
+  .cta-sec h2{font-weight:300;font-size:clamp(30px,4.6vw,56px);margin:20px 0 18px}
+  .cta-sec p{max-width:48ch;margin:0 auto;color:rgba(255,255,255,.74);font-size:16px}
+  .cta-sec .hint{margin-top:30px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--coral-lt)}
+
+  footer{background:#041d1b;color:rgba(255,255,255,.5);font-size:12px;letter-spacing:.04em}
+  footer .wrap{padding:34px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer .word{font-size:12px}
+  footer .fnav{display:flex;gap:22px;flex-wrap:wrap}
+  footer .fnav a{color:rgba(255,255,255,.55);letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+  footer .fnav a:hover{color:#fff}
+  footer .fmeta{font-size:11.5px;color:rgba(255,255,255,.45)}
+
+  .langswitch{display:flex;gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.32);border-radius:2px;padding:3px}
+  .langswitch button{background:none;border:0;color:rgba(255,255,255,.65);padding:6px 10px;cursor:pointer;font-family:inherit;font-size:11px;letter-spacing:.16em;border-radius:1px;transition:.2s}
+  .langswitch button.on{background:var(--coral-lt);color:var(--ink);font-weight:700}
+  @media(max-width:640px){.langswitch button{padding:5px 9px}}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <div class="word">HOLIDAY <b>FUTURE</b></div>
+  <div class="navr">
+    <a data-i18n="nav_apts" href="#collection">The Studios</a>
+    <a data-i18n="nav_res" href="#residence">The Residence</a>
+    <div class="langswitch" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="es">ES</button>
+    </div>
+    <a data-i18n="nav_book" class="book" href="https://192885-001.holidayfuture.com/all-listings" target="_blank" rel="noopener">Book Direct</a>
+  </div>
+</div></nav>
+
+<header class="hero">
+  <img class="bg" src="https://bookingenginecdn.hostaway.com/listing/192885-586538-f-fc--TRwQhs8kmdHRBAxxJmhBJDbVVwAaR-ESOzikSI-6a94770e4ed5c?width=1800&quality=78&format=webp" alt="Penthouse studio, Downtown Miami" onerror="this.style.display='none'"/>
+  <div class="veil"></div>
+  <div class="frame"></div>
+  <div class="wrap">
+    <div class="eyebrow">Downtown Miami · 230 NE 4th Street</div>
+    <h1 data-i18n="hero_h1" class="serif">Miami, from<br/>the <em>30th floor.</em></h1>
+    <p data-i18n="hero_p">Six private studios in a Downtown Miami high-rise — rooftop pool, gym and skyline views, minutes from the cruise port. Booked directly with us, never through a middleman.</p>
+    <div class="acts">
+      <a data-i18n="hero_book" class="btn btn-solid" href="https://192885-001.holidayfuture.com/all-listings" target="_blank" rel="noopener">Book Direct</a>
+      <a data-i18n="hero_view" class="btn btn-line" href="#collection">View the studios</a>
+    </div>
+  </div>
+  <div data-i18n="scrollcue" class="scrollcue">Scroll</div>
+</header>
+
+<section class="collection" id="collection">
+  <div class="wrap">
+    <div class="lede">
+      <div data-i18n="col_eb" class="eyebrow">The Studios</div>
+      <h2 data-i18n="col_h2" class="serif">Six studios, high above Downtown.</h2>
+      <p data-i18n="col_k" class="k">One bedroom, up to three guests, pool, gym and fully equipped kitchens — rated 4.0 to 4.8 by recent guests. Every stay includes the building's rooftop pool, fitness centre and lounges.</p>
+    </div>
+    <div class="grid">
+      <div class="est">
+        <span class="lbl">Holiday Future</span>
+        <span data-i18n="est_val" class="val">Downtown Miami · Six studios</span>
+      </div>
+      <a class="casa" href="https://192885-001.holidayfuture.com/listings/586538" target="_blank" rel="noopener">
+        <img src="https://bookingenginecdn.hostaway.com/listing/192885-586538-f-fc--TRwQhs8kmdHRBAxxJmhBJDbVVwAaR-ESOzikSI-6a94770e4ed5c?width=900&quality=76&format=webp" alt="Penthouse studio, 30th floor" onerror="this.style.opacity=0"/>
+        <div class="grad"></div><div class="rate serif">4.70 ★</div>
+        <div class="cap"><div data-i18n="nm1" class="nm">Penthouse · 30th Floor</div><div data-i18n="sub1" class="sub">Luxury studio penthouse · balcony · panoramic skyline</div><div data-i18n="view_res" class="view">View studio</div></div>
+      </a>
+      <a class="casa" href="https://192885-001.holidayfuture.com/listings/586540" target="_blank" rel="noopener">
+        <img src="https://bookingenginecdn.hostaway.com/listing/192885-586540-WKdarQnUQ6LTdAwLmx34kSfTXbP02gVuqJlpZAuOyiI-6a9476cc646c3?width=1400&quality=76&format=webp" alt="Skyline view studio, 23rd floor" onerror="this.style.opacity=0"/>
+        <div class="grad"></div><div class="rate serif">4.80 ★</div>
+        <div class="cap"><div data-i18n="nm2" class="nm">Skyline Studio · 23rd Floor</div><div data-i18n="sub2" class="sub">Queen bed · smart divider · steps from Bayside</div><div data-i18n="view_res" class="view">View studio</div></div>
+      </a>
+      <a class="casa" href="https://192885-001.holidayfuture.com/listings/508958" target="_blank" rel="noopener">
+        <img src="https://bookingenginecdn.hostaway.com/listing/192885-508958-u-FOUvVbl--aDdoWPLa6phZPHVug0Dpus4qxfO8nJ----Q-6a6d0dfc88f1e?width=900&quality=76&format=webp" alt="Luxury studio near cruise port" onerror="this.style.opacity=0"/>
+        <div class="grad"></div><div class="rate serif">4.00 ★</div>
+        <div class="cap"><div data-i18n="nm3" class="nm">Cruise Port Studio</div><div data-i18n="sub3" class="sub">High floor · skyline view · steps from the port</div><div data-i18n="view_res" class="view">View studio</div></div>
+      </a>
+      <a class="casa" href="https://192885-001.holidayfuture.com/listings/508957" target="_blank" rel="noopener">
+        <img src="https://bookingenginecdn.hostaway.com/listing/192885-508957-xoGrO5u8VXnf1xcf648KTQKyc8TL6rgGVPCYpYdf-5E-6a83f4f92ed93?width=900&quality=76&format=webp" alt="Modern downtown apartment" onerror="this.style.opacity=0"/>
+        <div class="grad"></div><div class="rate serif">4.65 ★</div>
+        <div class="cap"><div data-i18n="nm4" class="nm">Modern Downtown</div><div data-i18n="sub4" class="sub">Heart of Downtown · pool &amp; gym · near the port</div><div data-i18n="view_res" class="view">View studio</div></div>
+      </a>
+      <a class="casa" href="https://192885-001.holidayfuture.com/listings/582235" target="_blank" rel="noopener">
+        <img src="https://bookingenginecdn.hostaway.com/listing/192885-582235-QumJbuxydcOjeEp0mrxjIsga2Jt427rAWHz0hvvUPNg-6a846cc37a43a?width=900&quality=76&format=webp" alt="Ocean view studio" onerror="this.style.opacity=0"/>
+        <div class="grad"></div><div data-i18n="rate_new" class="rate serif">New</div>
+        <div class="cap"><div data-i18n="nm5" class="nm">Ocean View Studio</div><div data-i18n="sub5" class="sub">Ocean views · Smart TV · close to the beach</div><div data-i18n="view_res" class="view">View studio</div></div>
+      </a>
+      <a class="casa" href="https://192885-001.holidayfuture.com/listings/586555" target="_blank" rel="noopener">
+        <img src="https://bookingenginecdn.hostaway.com/listing/192885-586555-nlHOFya-3qSG4TjKVbMgmAVyfqb5Xgg0dSrmT66nyxo-6a9492de3f289?width=1400&quality=76&format=webp" alt="Luxury stay with pool and gym" onerror="this.style.opacity=0"/>
+        <div class="grad"></div><div data-i18n="rate_new2" class="rate serif">New</div>
+        <div class="cap"><div data-i18n="nm6" class="nm">Luxury Stay · Pool &amp; Gym</div><div data-i18n="sub6" class="sub">Bright, stylish space · minutes from the port</div><div data-i18n="view_res" class="view">View studio</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="direct">
+  <div class="wrap">
+    <div data-i18n="dir_eb" class="eyebrow">Book Direct</div>
+    <h2 data-i18n="dir_h2" class="serif">The same studio, without the <em>middleman's cut.</em></h2>
+    <div class="ledger">
+      <div class="c keep"><div data-i18n="d_best" class="fig serif">Best rate</div><div data-i18n="d_best_c" class="cap">Reserve with us for our lowest available price — guaranteed.</div></div>
+      <div class="c"><div data-i18n="d_nofee" class="fig serif">No fees</div><div data-i18n="d_nofee_c" class="cap">Nothing added at checkout. No platform commission, ever.</div></div>
+      <div class="c keep"><div data-i18n="d_ret" class="fig serif">Every return</div><div data-i18n="d_ret_c" class="cap">A returning-guest rate on every stay that follows.</div></div>
+    </div>
+    <p data-i18n="d_note" class="note">Reserve directly with us for our best, unbeatable rate — a better price for you, kept between us.</p>
+  </div>
+</section>
+
+<section class="res" id="residence">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div data-i18n="res_eb" class="eyebrow" style="color:var(--coral)">The Residence</div>
+        <h2 data-i18n="res_h2" class="serif" style="margin-top:18px">Alea, a tower built for the way you live now.</h2>
+        <div class="addr">230 NE 4th Street · Downtown Miami</div>
+      </div>
+      <p data-i18n="res_d" class="d">A 2018, 32-storey high-rise in the heart of the Central Business District, with hotel-grade hospitality across its rooftop and ground floor — one block from Bayside Marketplace and the bay.</p>
+    </div>
+    <div class="amen">
+      <div class="a"><div data-i18n="am1t" class="t">Heated saltwater rooftop pool</div><div data-i18n="am1s" class="s">Two-level sundeck with a turfed lawn</div></div>
+      <div class="a"><div data-i18n="am2t" class="t">Fitness centre</div><div data-i18n="am2s" class="s">Spin room and outdoor yoga area</div></div>
+      <div class="a"><div data-i18n="am3t" class="t">Co-working space</div><div data-i18n="am3s" class="s">Work steps from your studio</div></div>
+      <div class="a"><div data-i18n="am4t" class="t">On-site dining &amp; coffee bistro</div><div data-i18n="am4s" class="s">On the ground floor</div></div>
+      <div class="a"><div data-i18n="am5t" class="t">24-hour concierge &amp; security</div><div data-i18n="am5s" class="s">Controlled, secure access</div></div>
+      <div class="a"><div data-i18n="am6t" class="t">Parking next door</div><div data-i18n="am6s" class="s">College Station garage · $15 per 24 h</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="loc">
+  <div class="wrap">
+    <div class="lede" style="padding-top:0">
+      <div data-i18n="nb_eb" class="eyebrow">The Neighbourhood</div>
+      <h2 data-i18n="nb_h2" class="serif">Everything worth doing, within reach.</h2>
+    </div>
+    <div class="row"><span class="p serif">Bayside Marketplace</span><span data-i18n="nb_1" class="m">1 block</span></div>
+    <div class="row"><span class="p serif">Kaseya Center &amp; Bayfront Park</span><span data-i18n="nb_2" class="m">2 blocks</span></div>
+    <div class="row"><span class="p serif">Whole Foods Market</span><span data-i18n="nb_1b" class="m">1 block</span></div>
+    <div class="row"><span class="p serif">College / Bayside Metromover</span><span data-i18n="nb_w" class="m">2 min walk</span></div>
+    <div class="row"><span class="p serif">PortMiami cruise terminals</span><span data-i18n="nb_min" class="m">Minutes away</span></div>
+    <div class="row"><span class="p serif">South Beach &amp; Miami Int'l Airport</span><span data-i18n="nb_15" class="m">15 min drive</span></div>
+  </div>
+</section>
+
+<section class="cta-sec" id="contact">
+  <div class="wrap">
+    <div data-i18n="cta_eb" class="eyebrow">Here for you</div>
+    <h2 data-i18n="cta_h2" class="serif">We answer, 24/7.</h2>
+    <p data-i18n="cta_p">Ask us anything — the studios, the building, parking or the neighbourhood — in English or Spanish, any hour. Book directly with us for our best, unbeatable rates.</p>
+    <div data-i18n="cta_hint" class="hint">In English or Spanish · any hour</div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div class="word">HOLIDAY <b>FUTURE</b></div>
+  <nav class="fnav">
+    <a data-i18n="f_apts" href="#collection">Studios</a>
+    <a data-i18n="f_res" href="#residence">Residence</a>
+    <a data-i18n="f_book" href="https://192885-001.holidayfuture.com/all-listings" target="_blank" rel="noopener">Book Direct</a>
+  </nav>
+  <div class="fmeta">230 NE 4th Street, Downtown Miami, FL · © 2026 Holiday Future</div>
+</div></footer>
+
+<elevenlabs-convai agent-id="agent_2901m1j3tvqxfwx810hs3z8hwwn1"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<script>
+  var nav=document.getElementById('nav');
+  var onScroll=function(){ if(window.scrollY>60) nav.classList.add('solid'); else nav.classList.remove('solid'); };
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+</script>
+
+<script>
+(function(){
+  var ES = {"nav_apts": "Los estudios", "nav_res": "La residencia", "nav_book": "Reserva directa", "hero_h1": "Miami, desde<br/>el <em>piso 30.</em>", "hero_p": "Seis estudios privados en una torre del Downtown de Miami — piscina en la azotea, gimnasio y vistas al horizonte, a minutos del puerto de cruceros. Resérvalos directamente con nosotros, nunca a través de intermediarios.", "hero_book": "Reserva directa", "hero_view": "Ver los estudios", "scrollcue": "Desliza", "col_eb": "Los estudios", "col_h2": "Seis estudios, en lo alto del Downtown.", "col_k": "Un dormitorio, hasta tres huéspedes, piscina, gimnasio y cocinas totalmente equipadas — con calificaciones de 4.0 a 4.8 de huéspedes recientes. Cada estancia incluye la piscina en la azotea, el gimnasio y los salones del edificio.", "est_val": "Downtown Miami · Seis estudios", "nm1": "Penthouse · Piso 30", "sub1": "Estudio penthouse de lujo · balcón · horizonte panorámico", "nm2": "Estudio Skyline · Piso 23", "sub2": "Cama queen · divisor inteligente · a pasos de Bayside", "nm3": "Estudio Puerto de Cruceros", "sub3": "Piso alto · vista al horizonte · a pasos del puerto", "nm4": "Moderno Downtown", "sub4": "Corazón del Downtown · piscina y gimnasio · cerca del puerto", "nm5": "Estudio Vista al Mar", "sub5": "Vistas al mar · Smart TV · cerca de la playa", "nm6": "Estancia de Lujo · Piscina y Gym", "sub6": "Espacio luminoso y elegante · a minutos del puerto", "view_res": "Ver estudio", "rate_new": "Nuevo", "rate_new2": "Nuevo", "dir_eb": "Reserva directa", "dir_h2": "El mismo estudio, sin la <em>comisión del intermediario.</em>", "d_best": "Mejor tarifa", "d_best_c": "Reserva con nosotros al precio más bajo disponible — garantizado.", "d_nofee": "Sin cargos", "d_nofee_c": "Sin cargos adicionales al finalizar. Nunca cobramos comisión de plataforma.", "d_ret": "En cada regreso", "d_ret_c": "Una tarifa especial para huéspedes que regresan, en cada estancia.", "d_note": "Reserva directamente con nosotros y consigue nuestra mejor tarifa, imbatible — un mejor precio para ti, que queda entre nosotros.", "res_eb": "La residencia", "res_h2": "Alea, una torre pensada para tu forma de vivir hoy.", "res_d": "Una torre de 2018 con 32 pisos en el corazón del distrito financiero, con hospitalidad de nivel hotelero en su azotea y planta baja — a una cuadra de Bayside Marketplace y la bahía.", "am1t": "Piscina climatizada de agua salada", "am1s": "Solárium de dos niveles con jardín de césped", "am2t": "Gimnasio", "am2s": "Sala de spinning y yoga al aire libre", "am3t": "Espacio de coworking", "am3s": "Trabaja a pasos de tu estudio", "am4t": "Restaurante y café en el edificio", "am4s": "En la planta baja", "am5t": "Conserjería y seguridad 24 horas", "am5s": "Acceso controlado y seguro", "am6t": "Estacionamiento al lado", "am6s": "Garaje College Station · $15 por 24 h", "nb_eb": "El vecindario", "nb_h2": "Todo lo que vale la pena, a tu alcance.", "nb_1": "1 cuadra", "nb_2": "2 cuadras", "nb_1b": "1 cuadra", "nb_w": "2 min a pie", "nb_min": "A minutos", "nb_15": "15 min en auto", "cta_eb": "Estamos para ti", "cta_h2": "Respondemos, 24/7.", "cta_p": "Pregúntanos lo que quieras — los estudios, el edificio, el estacionamiento o el vecindario — en inglés o español, a cualquier hora. Reserva directamente con nosotros y obtén nuestras mejores tarifas, imbatibles.", "cta_hint": "En inglés o español · a cualquier hora", "f_apts": "Estudios", "f_res": "Residencia", "f_book": "Reserva directa"};
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var EN = {};
+  nodes.forEach(function(n){ EN[n.getAttribute('data-i18n')] = n.innerHTML; });
+  function setLang(l){
+    nodes.forEach(function(n){
+      var k = n.getAttribute('data-i18n');
+      var v = (l==='es') ? (ES[k]!=null?ES[k]:EN[k]) : EN[k];
+      if(v!=null) n.innerHTML = v;
+    });
+    document.documentElement.lang = l;
+    try{ localStorage.setItem('hf_lang', l); }catch(e){}
+    document.querySelectorAll('.langswitch button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-lang')===l); });
+  }
+  document.querySelectorAll('.langswitch button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+  var init='en';
+  try{ var s=localStorage.getItem('hf_lang'); if(s){init=s;} else if((navigator.language||'').slice(0,2).toLowerCase()==='es'){init='es';} }catch(e){}
+  setLang(init);
+})();
+</script>
+</body>
+</html>
