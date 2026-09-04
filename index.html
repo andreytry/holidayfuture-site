@@ -225,6 +225,10 @@
 .lp-card input{flex:1;border:1px solid var(--line-dk);border-radius:99px;padding:12px 16px;font-family:inherit;font-size:14px}
 .lp-card form button{background:var(--coral);color:#fff;border:0;border-radius:99px;padding:12px 18px;font-weight:800;letter-spacing:.05em;font-size:12px;text-transform:uppercase;cursor:pointer}
 .lp-ok{display:none;color:var(--ink);font-weight:700;font-size:14px;padding:8px 0}
+
+.hero .bg{animation:heroZoom 26s ease-in-out infinite alternate;transform-origin:center 40%;will-change:transform}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.09)}}
+@media (prefers-reduced-motion: reduce){.hero .bg{animation:none}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LodgingBusiness", "name": "Holiday Future \u2014 Downtown Miami Studios", "url": "https://andreytry.github.io/holidayfuture-site/", "address": {"@type": "PostalAddress", "streetAddress": "230 NE 4th Street", "addressLocality": "Miami", "addressRegion": "FL", "postalCode": "33132", "addressCountry": "US"}, "geo": {"@type": "GeoCoordinates", "latitude": 25.7777, "longitude": -80.1904}, "checkinTime": "16:00", "checkoutTime": "11:00", "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Rooftop pool", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Fitness center", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true}, {"@type": "LocationFeatureSpecification", "name": "24-hour security", "value": true}], "makesOffer": [{"@type": "Offer", "name": "Penthouse Studio \u2014 30th Floor", "price": "199", "priceCurrency": "USD", "url": "https://192885-001.holidayfuture.com/listings/586538"}, {"@type": "Offer", "name": "Skyline View Studio \u2014 23rd Floor", "price": "320", "priceCurrency": "USD", "url": "https://192885-001.holidayfuture.com/listings/586540"}, {"@type": "Offer", "name": "Luxury Studio Steps from Cruise Port", "price": "315", "priceCurrency": "USD", "url": "https://192885-001.holidayfuture.com/listings/508958"}, {"@type": "Offer", "name": "Modern Downtown Apartment Near Cruise Port", "price": "200", "priceCurrency": "USD", "url": "https://192885-001.holidayfuture.com/listings/508957"}, {"@type": "Offer", "name": "Ocean View Studio", "price": "290", "priceCurrency": "USD", "url": "https://192885-001.holidayfuture.com/listings/582235"}, {"@type": "Offer", "name": "Luxury Stay Downtown Miami \u2014 Pool & Gym", "price": "315", "priceCurrency": "USD", "url": "https://192885-001.holidayfuture.com/listings/586555"}]}</script>
 </head>
@@ -258,7 +262,7 @@
 </div></div>
 
 <header class="hero" id="top">
-  <img class="bg" src="assets/hero-bay.webp" alt="Biscayne Bay and marina view from a Holiday Future studio" onerror="this.style.display='none'"/>
+  <img class="bg" src="assets/hero-bay2.webp" alt="Biscayne Bay and marina view from a Holiday Future studio" onerror="this.style.display='none'"/>
   <div class="veil"></div>
   <div class="wrap">
     <div class="eyebrow">Downtown Miami · 230 NE 4th Street</div>
