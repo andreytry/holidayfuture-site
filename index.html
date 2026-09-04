@@ -226,9 +226,9 @@
 .lp-card form button{background:var(--coral);color:#fff;border:0;border-radius:99px;padding:12px 18px;font-weight:800;letter-spacing:.05em;font-size:12px;text-transform:uppercase;cursor:pointer}
 .lp-ok{display:none;color:var(--ink);font-weight:700;font-size:14px;padding:8px 0}
 
-.hero .bg{animation:none}
+.hero .bg{animation:none;object-fit:contain;background:var(--deep)}
 @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.09)}}
-@media (prefers-reduced-motion: reduce){.hero .bg{animation:none}}
+@media (prefers-reduced-motion: reduce){.hero .bg{animation:none;object-fit:contain;background:var(--deep)}}
 
 .hero .hf-brand{font-weight:600;font-size:clamp(54px,11vw,132px);line-height:.95;letter-spacing:-.02em;text-shadow:0 4px 44px rgba(0,0,0,.9),0 2px 8px rgba(0,0,0,.6)}
 .hero .hf-brand em{font-style:italic;color:var(--gold)}
@@ -267,7 +267,7 @@
 </div></div>
 
 <header class="hero" id="top">
-  <img class="bg" src="assets/hero-bay-clean.webp" alt="Biscayne Bay and marina view from a Holiday Future studio" onerror="this.style.display='none'"/>
+  <img class="bg" src="assets/hero-corner.webp" alt="Biscayne Bay and marina view from a Holiday Future studio" onerror="this.style.display='none'"/>
   <div class="veil"></div>
   <div class="wrap">
     <div class="eyebrow">Downtown Miami · 230 NE 4th Street</div>
