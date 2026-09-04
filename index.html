@@ -43,6 +43,7 @@
   .lang{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:99px;overflow:hidden}
   .lang button{background:none;border:0;color:rgba(255,255,255,.7);padding:8px 12px;min-width:40px;cursor:pointer;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.08em;transition:.2s;line-height:1}
   .lang button.on{background:#fff;color:var(--ink)}
+.lang.mnav{display:none;margin-left:auto;margin-right:10px}
   .bookbtn{background:var(--coral);color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border-radius:99px;transition:.25s;white-space:nowrap}
   .bookbtn:hover{background:#fff;color:var(--ink)}
   /* hamburger (hidden on desktop) */
@@ -56,7 +57,8 @@
   @media(max-width:760px){
     nav{padding:0}
     nav .wrap{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .navr{display:none}                 /* hide the desktop control cluster */
+    .navr{display:none}
+.lang.mnav{display:flex}                 /* hide the desktop control cluster */
     .burger{display:flex}                /* show hamburger */
     .brand .b2{display:none}
     .brand .b1{font-size:16px;line-height:1}
@@ -223,6 +225,7 @@
     </div>
     <a data-i18n="nav_book" class="bookbtn" href="https://192885-001.holidayfuture.com/all-listings" target="_blank" rel="noopener">Book Direct</a>
   </div>
+  <div class="lang mnav" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="es">ES</button></div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
 <div class="mpanel" id="mpanel"><div class="inner">
@@ -230,10 +233,6 @@
   <a class="mlink" data-i18n="nav_tour" href="#tour">Tour</a>
   <a class="mlink" data-i18n="nav_res" href="#residence">The Tower</a>
   <a class="mlink" data-i18n="nav_nb" href="#area">Neighbourhood</a>
-  <div class="mlang" aria-label="Language">
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="es">ES</button>
-  </div>
   <a class="mtour" data-i18n="m_tour" href="#tour">&#9658; Watch the tour</a>
   <a class="mbook" data-i18n="nav_book" href="https://192885-001.holidayfuture.com/all-listings" target="_blank" rel="noopener">Book Direct</a>
 </div></div>
