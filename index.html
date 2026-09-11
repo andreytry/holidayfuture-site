@@ -226,8 +226,7 @@
 .lp-card input{flex:1;border:1px solid var(--line-dk);border-radius:99px;padding:12px 16px;font-family:inherit;font-size:14px}
 .lp-card form button{width:100%;background:var(--coral);color:#fff;border:0;border-radius:99px;padding:14px 18px;font-weight:800;letter-spacing:.06em;font-size:12.5px;text-transform:uppercase;cursor:pointer}
 .lp-fine{color:var(--muted);font-size:11.5px;line-height:1.45;margin:11px 0 0}
-.lp-tab{display:none;position:fixed;left:0;bottom:30%;z-index:69;background:var(--coral);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;padding:11px 12px;border-radius:0 12px 12px 0;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.28);writing-mode:vertical-rl;text-orientation:mixed}
-.lp-tab.on{display:block}
+
 @media(max-width:560px){
  .leadpop{padding:12px;align-items:flex-start}
  .lp-card{margin-top:54px;max-height:74vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:22px 18px 20px;border-radius:14px}
@@ -238,7 +237,6 @@
  .lp-card form button{padding:13px 16px;font-size:12px}
  .lp-fine{font-size:11px;margin-top:9px}
  .lp-x{top:6px;right:10px;font-size:30px;padding:4px 8px}
- .lp-tab{bottom:auto;top:120px;font-size:10px;padding:9px 10px}
 }
 .lp-ok{display:none;color:var(--ink);font-weight:700;font-size:14px;padding:8px 0}
 
@@ -535,24 +533,22 @@
     <div class="lp-ok" id="lpok">Done &mdash; your member code is on its way to your inbox.</div>
   </div>
 </div>
-<div class="lp-tab" id="lptab">10% OFF</div>
 <script>
 (function(){
   var pop=document.getElementById('leadpop'); if(!pop) return;
-  var tab=document.getElementById('lptab');
   var T={
     en:{h:"Unlock 10% off your first night",
         p:"Register free as a Holiday Future member and we'll email you the official offer with your personal booking code. No password, no account to manage.",
         badge:"Member rate", btn:"Unlock my offer",
         email:"you@email.com", phone:"Phone (optional)",
         fine:"No spam. Only your offer and your booking details.",
-        ok:"Done \u2014 your member code is on its way to your inbox.", tab:"10% OFF"},
+        ok:"Done \u2014 your member code is on its way to your inbox."},
     es:{h:"Desbloquea 10% en tu primera noche",
         p:"Reg\u00edstrate gratis como miembro de Holiday Future y te enviamos por correo la oferta oficial con tu c\u00f3digo personal de reserva. Sin contrase\u00f1a, sin cuenta que administrar.",
         badge:"Tarifa de socios", btn:"Quiero mi oferta",
         email:"tu@email.com", phone:"Tel\u00e9fono (opcional)",
         fine:"Sin spam. Solo tu oferta y los datos de tu reserva.",
-        ok:"Listo \u2014 tu c\u00f3digo de socio va en camino a tu correo.", tab:"10% DTO"}
+        ok:"Listo \u2014 tu c\u00f3digo de socio va en camino a tu correo."}
   };
   function tr(){
     var l=(document.documentElement.lang==='es')?'es':'en', t=T[l];
@@ -564,20 +560,22 @@
     document.getElementById('lpok').innerHTML=t.ok;
     document.getElementById('lpemail').placeholder=t.email;
     document.getElementById('lpphone').placeholder=t.phone;
-    tab.textContent=t.tab;
   }
   tr();
   document.addEventListener('click',function(e){
     if(e.target && e.target.getAttribute && e.target.getAttribute('data-lang')){ setTimeout(tr,60); }
   });
 
-  var KEY='hf_member_pop_v2', done=false;
-  try{ done=!!localStorage.getItem(KEY); }catch(e){}
-  function mark(){ try{ localStorage.setItem(KEY,String(Date.now())); }catch(e){} }
-  function open(){ if(pop.classList.contains('on')) return; pop.classList.add('on'); tab.classList.remove('on'); }
-  function close(){ pop.classList.remove('on'); tab.classList.add('on'); mark(); }
+  var K_DONE='hf_member_joined', K_SKIP='hf_member_skipped_at', SKIP_DAYS=7;
+  var done=false, skipped=0;
+  try{ done=!!localStorage.getItem(K_DONE); skipped=parseInt(localStorage.getItem(K_SKIP)||'0',10)||0; }catch(e){}
+  var suppressed = done || (Date.now()-skipped < SKIP_DAYS*86400000);
+  function markJoined(){ try{ localStorage.setItem(K_DONE,'1'); }catch(e){} }
+  function markSkipped(){ try{ localStorage.setItem(K_SKIP,String(Date.now())); }catch(e){} }
+  function open(){ if(pop.classList.contains('on')) return; pop.classList.add('on'); }
+  function close(){ pop.classList.remove('on'); markSkipped(); }
 
-  if(!done){
+  if(!suppressed){
     var fired=false;
     var go=function(){ if(fired) return; fired=true; open(); };
     setTimeout(go, 800);
@@ -585,11 +583,8 @@
       if((window.scrollY+window.innerHeight)/document.body.scrollHeight > 0.45) go();
     }, {passive:true});
     document.addEventListener('mouseout', function(e){ if(!e.relatedTarget && e.clientY<10) go(); });
-  } else {
-    tab.classList.add('on');
   }
 
-  tab.addEventListener('click', open);
   document.getElementById('lpx').addEventListener('click', close);
   pop.addEventListener('click', function(e){ if(e.target===pop) close(); });
 
@@ -603,7 +598,7 @@
     document.getElementById('lpform').style.display='none';
     document.getElementById('lp-fine').style.display='none';
     document.getElementById('lpok').style.display='block';
-    mark();
+    markJoined();
     setTimeout(function(){ pop.classList.remove('on'); }, 3500);
   });
 })();
