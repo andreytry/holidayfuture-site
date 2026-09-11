@@ -228,6 +228,18 @@
 .lp-fine{color:var(--muted);font-size:11.5px;line-height:1.45;margin:11px 0 0}
 .lp-tab{display:none;position:fixed;left:0;bottom:30%;z-index:69;background:var(--coral);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;padding:11px 12px;border-radius:0 12px 12px 0;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.28);writing-mode:vertical-rl;text-orientation:mixed}
 .lp-tab.on{display:block}
+@media(max-width:560px){
+ .leadpop{padding:12px;align-items:flex-start}
+ .lp-card{margin-top:54px;max-height:74vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:22px 18px 20px;border-radius:14px}
+ .lp-h{font-size:21px;line-height:1.22}
+ .lp-p{font-size:13px;margin-bottom:14px}
+ .lp-badge{font-size:9.5px;padding:4px 9px;margin-bottom:10px}
+ .lp-card input{padding:11px 14px;font-size:16px}
+ .lp-card form button{padding:13px 16px;font-size:12px}
+ .lp-fine{font-size:11px;margin-top:9px}
+ .lp-x{top:6px;right:10px;font-size:30px;padding:4px 8px}
+ .lp-tab{bottom:auto;top:120px;font-size:10px;padding:9px 10px}
+}
 .lp-ok{display:none;color:var(--ink);font-weight:700;font-size:14px;padding:8px 0}
 
 .hero .bg{animation:none;object-fit:contain;background:var(--deep)}
@@ -568,7 +580,7 @@
   if(!done){
     var fired=false;
     var go=function(){ if(fired) return; fired=true; open(); };
-    setTimeout(go, 5000);
+    setTimeout(go, 800);
     window.addEventListener('scroll', function(){
       if((window.scrollY+window.innerHeight)/document.body.scrollHeight > 0.45) go();
     }, {passive:true});
