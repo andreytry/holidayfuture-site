@@ -566,10 +566,13 @@
     if(e.target && e.target.getAttribute && e.target.getAttribute('data-lang')){ setTimeout(tr,60); }
   });
 
+  // DEMO MODE: show the popup on every visit. Set DEMO to false for production
+  // behaviour (hidden for 7 days after a dismiss, never again once registered).
+  var DEMO = true;
   var K_DONE='hf_member_joined', K_SKIP='hf_member_skipped_at', SKIP_DAYS=7;
   var done=false, skipped=0;
   try{ done=!!localStorage.getItem(K_DONE); skipped=parseInt(localStorage.getItem(K_SKIP)||'0',10)||0; }catch(e){}
-  var suppressed = done || (Date.now()-skipped < SKIP_DAYS*86400000);
+  var suppressed = DEMO ? false : (done || (Date.now()-skipped < SKIP_DAYS*86400000));
   function markJoined(){ try{ localStorage.setItem(K_DONE,'1'); }catch(e){} }
   function markSkipped(){ try{ localStorage.setItem(K_SKIP,String(Date.now())); }catch(e){} }
   function open(){ if(pop.classList.contains('on')) return; pop.classList.add('on'); }
