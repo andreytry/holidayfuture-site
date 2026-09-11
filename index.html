@@ -221,9 +221,13 @@
 .lp-x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:26px;color:var(--muted);cursor:pointer;line-height:1}
 .lp-h{font-size:26px;margin:0 0 8px}
 .lp-p{color:var(--muted);font-size:14px;margin:0 0 16px;line-height:1.5}
-.lp-card form{display:flex;gap:8px}
+.lp-badge{display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:99px;margin-bottom:12px}
+.lp-card form{display:flex;flex-direction:column;gap:9px}
 .lp-card input{flex:1;border:1px solid var(--line-dk);border-radius:99px;padding:12px 16px;font-family:inherit;font-size:14px}
-.lp-card form button{background:var(--coral);color:#fff;border:0;border-radius:99px;padding:12px 18px;font-weight:800;letter-spacing:.05em;font-size:12px;text-transform:uppercase;cursor:pointer}
+.lp-card form button{width:100%;background:var(--coral);color:#fff;border:0;border-radius:99px;padding:14px 18px;font-weight:800;letter-spacing:.06em;font-size:12.5px;text-transform:uppercase;cursor:pointer}
+.lp-fine{color:var(--muted);font-size:11.5px;line-height:1.45;margin:11px 0 0}
+.lp-tab{display:none;position:fixed;left:0;bottom:30%;z-index:69;background:var(--coral);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;padding:11px 12px;border-radius:0 12px 12px 0;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.28);writing-mode:vertical-rl;text-orientation:mixed}
+.lp-tab.on{display:block}
 .lp-ok{display:none;color:var(--ink);font-weight:700;font-size:14px;padding:8px 0}
 
 .hero .bg{animation:none;object-fit:contain;background:var(--deep)}
@@ -481,7 +485,7 @@
 
 <script>
 (function(){
-  var ES = {"lead_h": "5% en tu primera estancia", "lead_p": "Deja tu email y te enviamos un c\u00f3digo de 5% para reservar directo nuestros estudios en Downtown Miami.", "lead_btn": "Enviar mi c\u00f3digo", "lead_ok": "Listo: revisa tu correo, tu c\u00f3digo va en camino.", "save_line": "Reserva directa: ahorra 10% frente a Airbnb y Booking.com", "mcta_dates": "Ver fechas y precios", "pr1": "Desde <b>$199</b>/noche · 1 hab · 1 baño · hasta 3", "pr2": "Desde <b>$320</b>/noche · 1 hab · 1 baño · hasta 3", "pr3": "Desde <b>$315</b>/noche · 1 hab · 1 baño · hasta 3", "pr4": "Desde <b>$200</b>/noche · 1 hab · 1 baño · hasta 3", "pr5": "Desde <b>$290</b>/noche · 1 hab · 1 baño · hasta 3", "pr6": "Desde <b>$315</b>/noche · 1 hab · 1 baño · hasta 3", "nav_st": "Estudios", "nav_tour": "Recorrido", "m_tour": "&#9658; Ver el recorrido", "hero_tour": "<span class=\"play\">&#9658;</span> Ver el recorrido", "tr_eb": "El recorrido", "tr_h2": "Recorre cada estudio, antes de llegar.", "nav_res": "La torre", "nav_nb": "El vecindario", "nav_book": "Reserva directa", "hero_h1": "Estudios de lujo, en el <em>piso 30.</em>", "hero_p": "Seis estudios privados en una torre del Downtown — piscina en la azotea, gimnasio y vistas al horizonte, a minutos del puerto de cruceros. Resérvalos directamente con nosotros, nunca a través de intermediarios.", "hero_book": "Reserva directa", "hero_view": "Ver los estudios", "st1": "Estudios privados", "st2": "Mejor calificación", "st3": "Conserjería y seguridad", "col_eb": "Los estudios", "col_h2": "Seis estudios, en lo alto del Downtown.", "col_k": "Un dormitorio, hasta tres huéspedes, piscina, gimnasio y cocinas totalmente equipadas — con calificaciones de 4.0 a 4.8 de huéspedes recientes. Cada estancia incluye la piscina en la azotea, el gimnasio y los salones de la torre.", "nm1": "Penthouse · Piso 30", "sub1": "Estudio penthouse de lujo · balcón · horizonte panorámico", "nm2": "Estudio Skyline · Piso 23", "sub2": "Cama queen · divisor inteligente · a pasos de Bayside", "nm3": "Estudio Puerto de Cruceros", "sub3": "Piso alto · vista al horizonte · a pasos del puerto", "nm4": "Moderno Downtown", "sub4": "Corazón del Downtown · piscina y gimnasio · cerca del puerto", "nm5": "Estudio Vista al Mar", "sub5": "Vistas al mar · Smart TV · cerca de la playa", "nm6": "Estancia de Lujo · Piscina y Gym", "sub6": "Espacio luminoso y elegante · a minutos del puerto", "view_res": "Ver estudio", "rate_new": "Nuevo", "rate_new2": "Nuevo", "dir_eb": "Reserva directa", "dir_h2": "El mismo estudio, sin la <em>comisión del intermediario.</em>", "d_best": "Mejor tarifa", "d_best_c": "Reserva con nosotros al precio más bajo disponible — garantizado.", "d_nofee": "Sin cargos", "d_nofee_c": "Sin cargos adicionales al finalizar. Nunca cobramos comisión de plataforma.", "d_ret": "En cada regreso", "d_ret_c": "Una tarifa especial para huéspedes que regresan, en cada estancia.", "d_note": "Reserva directamente con nosotros y consigue nuestra mejor tarifa, imbatible — un mejor precio para ti, que queda entre nosotros.", "res_eb": "La residencia", "res_h2": "Alea, una torre pensada para tu forma de vivir hoy.", "res_d": "Una torre de 2018 con 32 pisos en el corazón del distrito financiero, con hospitalidad de nivel hotelero en su azotea y planta baja — a una cuadra de Bayside Marketplace y la bahía.", "am1t": "Piscina climatizada de agua salada", "am1s": "Solárium de dos niveles con jardín de césped", "am2t": "Gimnasio", "am2s": "Sala de spinning y yoga al aire libre", "am3t": "Espacio de coworking", "am3s": "Trabaja a pasos de tu estudio", "am4t": "Restaurante y café", "am4s": "En la planta baja", "am5t": "Conserjería y seguridad 24 horas", "am5s": "Acceso controlado y seguro", "am6t": "Estacionamiento al lado", "am6s": "Garaje College Station · $15 por 24 h", "nb_eb": "El vecindario", "nb_h2": "Todo lo que vale la pena, a tu alcance.", "nb_1": "1 cuadra", "nb_2": "2 cuadras", "nb_1b": "1 cuadra", "nb_w": "2 min a pie", "nb_min": "A minutos", "nb_15": "15 min en auto", "cta_eb": "Estamos para ti", "cta_h2": "Respondemos, 24/7.", "cta_p": "Pregúntanos lo que quieras — los estudios, la torre, el estacionamiento o el vecindario — en inglés o español, a cualquier hora. Reserva directamente con nosotros y obtén nuestras mejores tarifas, imbatibles.", "cta_hint": "Pregúntanos · abajo a la derecha de tu pantalla", "f_st": "Estudios", "f_res": "Residencia", "f_book": "Reserva directa"};
+  var ES = {"save_line": "Reserva directa: ahorra 10% frente a Airbnb y Booking.com", "mcta_dates": "Ver fechas y precios", "pr1": "Desde <b>$199</b>/noche · 1 hab · 1 baño · hasta 3", "pr2": "Desde <b>$320</b>/noche · 1 hab · 1 baño · hasta 3", "pr3": "Desde <b>$315</b>/noche · 1 hab · 1 baño · hasta 3", "pr4": "Desde <b>$200</b>/noche · 1 hab · 1 baño · hasta 3", "pr5": "Desde <b>$290</b>/noche · 1 hab · 1 baño · hasta 3", "pr6": "Desde <b>$315</b>/noche · 1 hab · 1 baño · hasta 3", "nav_st": "Estudios", "nav_tour": "Recorrido", "m_tour": "&#9658; Ver el recorrido", "hero_tour": "<span class=\"play\">&#9658;</span> Ver el recorrido", "tr_eb": "El recorrido", "tr_h2": "Recorre cada estudio, antes de llegar.", "nav_res": "La torre", "nav_nb": "El vecindario", "nav_book": "Reserva directa", "hero_h1": "Estudios de lujo, en el <em>piso 30.</em>", "hero_p": "Seis estudios privados en una torre del Downtown — piscina en la azotea, gimnasio y vistas al horizonte, a minutos del puerto de cruceros. Resérvalos directamente con nosotros, nunca a través de intermediarios.", "hero_book": "Reserva directa", "hero_view": "Ver los estudios", "st1": "Estudios privados", "st2": "Mejor calificación", "st3": "Conserjería y seguridad", "col_eb": "Los estudios", "col_h2": "Seis estudios, en lo alto del Downtown.", "col_k": "Un dormitorio, hasta tres huéspedes, piscina, gimnasio y cocinas totalmente equipadas — con calificaciones de 4.0 a 4.8 de huéspedes recientes. Cada estancia incluye la piscina en la azotea, el gimnasio y los salones de la torre.", "nm1": "Penthouse · Piso 30", "sub1": "Estudio penthouse de lujo · balcón · horizonte panorámico", "nm2": "Estudio Skyline · Piso 23", "sub2": "Cama queen · divisor inteligente · a pasos de Bayside", "nm3": "Estudio Puerto de Cruceros", "sub3": "Piso alto · vista al horizonte · a pasos del puerto", "nm4": "Moderno Downtown", "sub4": "Corazón del Downtown · piscina y gimnasio · cerca del puerto", "nm5": "Estudio Vista al Mar", "sub5": "Vistas al mar · Smart TV · cerca de la playa", "nm6": "Estancia de Lujo · Piscina y Gym", "sub6": "Espacio luminoso y elegante · a minutos del puerto", "view_res": "Ver estudio", "rate_new": "Nuevo", "rate_new2": "Nuevo", "dir_eb": "Reserva directa", "dir_h2": "El mismo estudio, sin la <em>comisión del intermediario.</em>", "d_best": "Mejor tarifa", "d_best_c": "Reserva con nosotros al precio más bajo disponible — garantizado.", "d_nofee": "Sin cargos", "d_nofee_c": "Sin cargos adicionales al finalizar. Nunca cobramos comisión de plataforma.", "d_ret": "En cada regreso", "d_ret_c": "Una tarifa especial para huéspedes que regresan, en cada estancia.", "d_note": "Reserva directamente con nosotros y consigue nuestra mejor tarifa, imbatible — un mejor precio para ti, que queda entre nosotros.", "res_eb": "La residencia", "res_h2": "Alea, una torre pensada para tu forma de vivir hoy.", "res_d": "Una torre de 2018 con 32 pisos en el corazón del distrito financiero, con hospitalidad de nivel hotelero en su azotea y planta baja — a una cuadra de Bayside Marketplace y la bahía.", "am1t": "Piscina climatizada de agua salada", "am1s": "Solárium de dos niveles con jardín de césped", "am2t": "Gimnasio", "am2s": "Sala de spinning y yoga al aire libre", "am3t": "Espacio de coworking", "am3s": "Trabaja a pasos de tu estudio", "am4t": "Restaurante y café", "am4s": "En la planta baja", "am5t": "Conserjería y seguridad 24 horas", "am5s": "Acceso controlado y seguro", "am6t": "Estacionamiento al lado", "am6s": "Garaje College Station · $15 por 24 h", "nb_eb": "El vecindario", "nb_h2": "Todo lo que vale la pena, a tu alcance.", "nb_1": "1 cuadra", "nb_2": "2 cuadras", "nb_1b": "1 cuadra", "nb_w": "2 min a pie", "nb_min": "A minutos", "nb_15": "15 min en auto", "cta_eb": "Estamos para ti", "cta_h2": "Respondemos, 24/7.", "cta_p": "Pregúntanos lo que quieras — los estudios, la torre, el estacionamiento o el vecindario — en inglés o español, a cualquier hora. Reserva directamente con nosotros y obtén nuestras mejores tarifas, imbatibles.", "cta_hint": "Pregúntanos · abajo a la derecha de tu pantalla", "f_st": "Estudios", "f_res": "Residencia", "f_book": "Reserva directa"};
   var nodes = document.querySelectorAll('[data-i18n]');
   var EN = {};
   nodes.forEach(function(n){ EN[n.getAttribute('data-i18n')] = n.innerHTML; });
@@ -507,29 +511,88 @@
 <div class="leadpop" id="leadpop" role="dialog" aria-modal="true">
   <div class="lp-card">
     <button class="lp-x" id="lpx" aria-label="Close">&times;</button>
-    <div data-i18n="lead_h" class="lp-h serif">5% off your first stay</div>
-    <p data-i18n="lead_p" class="lp-p">Leave your email and we'll send you a 5% direct-booking code for our Downtown Miami studios.</p>
-    <form id="lpform"><input id="lpemail" type="email" required placeholder="you@email.com"/><button data-i18n="lead_btn" type="submit">Send my code</button></form>
-    <div data-i18n="lead_ok" class="lp-ok" id="lpok">Done — check your inbox, your code is on its way.</div>
+    <div class="lp-badge" id="lp-badge">Member rate</div>
+    <div class="lp-h serif" id="lp-h">Unlock 10% off your first night</div>
+    <p class="lp-p" id="lp-p">Register free as a Holiday Future member and we'll email you the official offer with your personal booking code. No password, no account to manage.</p>
+    <form id="lpform">
+      <input id="lpemail" type="email" required placeholder="you@email.com" autocomplete="email"/>
+      <input id="lpphone" type="tel" placeholder="Phone (optional)" autocomplete="tel"/>
+      <button type="submit" id="lp-btn">Unlock my offer</button>
+    </form>
+    <p class="lp-fine" id="lp-fine">No spam. Only your offer and your booking details.</p>
+    <div class="lp-ok" id="lpok">Done &mdash; your member code is on its way to your inbox.</div>
   </div>
 </div>
+<div class="lp-tab" id="lptab">10% OFF</div>
 <script>
 (function(){
   var pop=document.getElementById('leadpop'); if(!pop) return;
-  var seen=false; try{seen=!!localStorage.getItem('hf_lead_seen');}catch(e){}
-  function close(){ pop.classList.remove('on'); try{localStorage.setItem('hf_lead_seen','1');}catch(e){} }
-  if(!seen){ setTimeout(function(){ pop.classList.add('on'); }, 12000); }
+  var tab=document.getElementById('lptab');
+  var T={
+    en:{h:"Unlock 10% off your first night",
+        p:"Register free as a Holiday Future member and we'll email you the official offer with your personal booking code. No password, no account to manage.",
+        badge:"Member rate", btn:"Unlock my offer",
+        email:"you@email.com", phone:"Phone (optional)",
+        fine:"No spam. Only your offer and your booking details.",
+        ok:"Done \u2014 your member code is on its way to your inbox.", tab:"10% OFF"},
+    es:{h:"Desbloquea 10% en tu primera noche",
+        p:"Reg\u00edstrate gratis como miembro de Holiday Future y te enviamos por correo la oferta oficial con tu c\u00f3digo personal de reserva. Sin contrase\u00f1a, sin cuenta que administrar.",
+        badge:"Tarifa de socios", btn:"Quiero mi oferta",
+        email:"tu@email.com", phone:"Tel\u00e9fono (opcional)",
+        fine:"Sin spam. Solo tu oferta y los datos de tu reserva.",
+        ok:"Listo \u2014 tu c\u00f3digo de socio va en camino a tu correo.", tab:"10% DTO"}
+  };
+  function tr(){
+    var l=(document.documentElement.lang==='es')?'es':'en', t=T[l];
+    document.getElementById('lp-badge').textContent=t.badge;
+    document.getElementById('lp-h').textContent=t.h;
+    document.getElementById('lp-p').textContent=t.p;
+    document.getElementById('lp-btn').textContent=t.btn;
+    document.getElementById('lp-fine').textContent=t.fine;
+    document.getElementById('lpok').innerHTML=t.ok;
+    document.getElementById('lpemail').placeholder=t.email;
+    document.getElementById('lpphone').placeholder=t.phone;
+    tab.textContent=t.tab;
+  }
+  tr();
+  document.addEventListener('click',function(e){
+    if(e.target && e.target.getAttribute && e.target.getAttribute('data-lang')){ setTimeout(tr,60); }
+  });
+
+  var KEY='hf_member_pop_v2', done=false;
+  try{ done=!!localStorage.getItem(KEY); }catch(e){}
+  function mark(){ try{ localStorage.setItem(KEY,String(Date.now())); }catch(e){} }
+  function open(){ if(pop.classList.contains('on')) return; pop.classList.add('on'); tab.classList.remove('on'); }
+  function close(){ pop.classList.remove('on'); tab.classList.add('on'); mark(); }
+
+  if(!done){
+    var fired=false;
+    var go=function(){ if(fired) return; fired=true; open(); };
+    setTimeout(go, 5000);
+    window.addEventListener('scroll', function(){
+      if((window.scrollY+window.innerHeight)/document.body.scrollHeight > 0.45) go();
+    }, {passive:true});
+    document.addEventListener('mouseout', function(e){ if(!e.relatedTarget && e.clientY<10) go(); });
+  } else {
+    tab.classList.add('on');
+  }
+
+  tab.addEventListener('click', open);
   document.getElementById('lpx').addEventListener('click', close);
   pop.addEventListener('click', function(e){ if(e.target===pop) close(); });
+
   document.getElementById('lpform').addEventListener('submit', function(e){
     e.preventDefault();
     var em=document.getElementById('lpemail').value.trim(); if(!em) return;
+    var ph=document.getElementById('lpphone').value.trim();
     var lang=(document.documentElement.lang||'en');
-    fetch('https://n8n.ai-process.net/webhook/hf-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,lang:lang})}).catch(function(){});
+    fetch('https://n8n.ai-process.net/webhook/hf-lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:em,phone:ph,lang:lang,offer:'MEMBER10',discount_pct:10,source:'site_popup'})}).catch(function(){});
     document.getElementById('lpform').style.display='none';
+    document.getElementById('lp-fine').style.display='none';
     document.getElementById('lpok').style.display='block';
-    try{localStorage.setItem('hf_lead_seen','1');}catch(e){}
-    setTimeout(close, 3500);
+    mark();
+    setTimeout(function(){ pop.classList.remove('on'); }, 3500);
   });
 })();
 </script>
