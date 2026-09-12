@@ -269,6 +269,9 @@
 <meta name="twitter:image" content="https://ai-process.net/hotels/assets/hero-corner.webp"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Holiday Future from the PortMiami cruise terminals?", "acceptedAnswer": {"@type": "Answer", "text": "The Alea tower at 230 NE 4th Street is minutes from the PortMiami cruise terminals, one block from Bayside Marketplace and a two-minute walk from the College / Bayside Metromover station."}}, {"@type": "Question", "name": "What are the check-in and check-out times?", "acceptedAnswer": {"@type": "Answer", "text": "Check-in is from 16:00 and check-out is at 11:00."}}, {"@type": "Question", "name": "Is parking available?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Parking is available in the College Station garage next door at $15 per 24 hours."}}, {"@type": "Question", "name": "What is included with every studio?", "acceptedAnswer": {"@type": "Answer", "text": "Every stay includes the tower's heated saltwater rooftop pool, two-level sundeck, fitness centre, spin room and outdoor yoga area, co-working space, ground-floor dining and coffee bistro, and 24-hour concierge and security."}}, {"@type": "Question", "name": "How many guests can a studio sleep?", "acceptedAnswer": {"@type": "Answer", "text": "Each studio has one bedroom and one bathroom and sleeps up to three guests, with a fully equipped kitchen."}}, {"@type": "Question", "name": "Is it cheaper to book direct than on Airbnb or Booking.com?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Booking direct saves 10% compared with Airbnb and Booking.com, with no platform commission and no fees added at checkout, plus a returning-guest rate on every stay that follows."}}, {"@type": "Question", "name": "How far is Miami International Airport and South Beach?", "acceptedAnswer": {"@type": "Answer", "text": "Both Miami International Airport and South Beach are about a 15-minute drive from the building."}}, {"@type": "Question", "name": "Can I ask questions before booking?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A 24/7 concierge answers questions about the studios, the building, parking and the neighbourhood in English and Spanish, any hour, via the chat at the bottom right of the page."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Miami", "item": "https://ai-process.net/hotels/"}, {"@type": "ListItem", "position": 2, "name": "Holiday Future - Downtown Miami Studios", "item": "https://ai-process.net/hotels/holidayfuture.html"}]}</script>
+<link rel="alternate" hreflang="en" href="https://ai-process.net/hotels/holidayfuture.html"/>
+<link rel="alternate" hreflang="es" href="https://ai-process.net/hotels/holidayfuture-es.html"/>
+<link rel="alternate" hreflang="x-default" href="https://ai-process.net/hotels/holidayfuture.html"/>
 </head>
 <body>
 
@@ -564,7 +567,6 @@
     b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
   });
   var init='en';
-  try{ var s=localStorage.getItem('hf_lang'); if(s){init=s;} else if((navigator.language||'').slice(0,2).toLowerCase()==='es'){init='es';} }catch(e){}
   setLang(init);
 })();
 </script>
@@ -662,6 +664,18 @@
   function apply(p){ document.querySelectorAll('.pr[data-l]').forEach(function(el){ var id=el.getAttribute('data-l'); if(p[id]){ var b=el.querySelector('b'); if(b) b.textContent='$'+p[id]; } }); }
   fetch('https://zkylrolpuwybsksspblj.supabase.co/functions/v1/hf-prices').then(function(r){return r.json();}).then(function(j){ if(j&&j.prices){ window.__hfP=j.prices; apply(j.prices); } }).catch(function(){});
   document.addEventListener('click',function(e){ if(e.target && e.target.getAttribute && e.target.getAttribute('data-lang')){ setTimeout(function(){ if(window.__hfP) apply(window.__hfP); }, 80); } });
+})();
+</script>
+<script>
+(function(){
+  function go(l){
+    var f = (l==='es') ? 'holidayfuture-es.html' : 'holidayfuture.html';
+    if(location.pathname.split('/').pop() !== f){ location.href = f + location.hash; }
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('.lang button, .mlang button') : null;
+    if(b){ e.preventDefault(); e.stopPropagation(); go(b.getAttribute('data-lang')); }
+  }, true);
 })();
 </script>
 </body>
